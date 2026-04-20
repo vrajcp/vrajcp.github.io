@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONIVRATIO: Latin Conspirators</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- setup -->
+  <section id="setup-screen" class="screen active">
+    <h1 class="title">CONIVRATIO</h1>
+    <p class="subtitle">A GAME OF SENATE AND SHADOWS</p>
+
+    <div class="two-col">
+      <div class="panel">
+        <h2>SETTINGS</h2>
+        <label class="field">
+          <span>ROUNDS</span>
+          <input type="number" id="setting-rounds" value="5" min="1" max="20">
+        </label>
+        <label class="field">
+          <span>QUESTIONS / ROUND</span>
+          <input type="number" id="setting-qpr" value="3" min="1" max="20">
+        </label>
+        <label class="field">
+          <span>VOTE TIMER (SEC)</span>
+          <input type="number" id="setting-timer" value="60" min="10" max="600">
+        </label>
+      </div>
+
+      <div class="panel">
+        <h2>PLAYERS</h2>
+        <ul id="player-list" class="player-list"></ul>
+        <div class="add-player">
+          <input type="text" id="new-player-name" placeholder="NAME" maxlength="20">
+          <label class="checkbox">
+            <input type="checkbox" id="new-player-conspirator">
+            <span>CONSPIRATOR</span>
+          </label>
+          <button id="add-player-btn" class="btn">ADD</button>
+        </div>
+        <p class="hint">Check the box BEFORE adding to mark a conspirator.</p>
+      </div>
+    </div>
+
+    <button id="start-game-btn" class="btn big-btn">START GAME</button>
+  </section>
+
+  <!-- round intro -->
+  <section id="round-screen" class="screen">
+    <h1 id="round-title" class="title">ROUND 1</h1>
+    <div class="panel center">
+      <h2>SENATORS IN CURIA</h2>
+      <ul id="round-players" class="roster"></ul>
+    </div>
+    <button id="begin-round-btn" class="btn big-btn">BEGIN</button>
+  </section>
+
+  <!-- question -->
+  <section id="question-screen" class="screen">
+    <div class="question-layout">
+      <div class="question-content">
+        <div id="question-number" class="qnum"></div>
+        <div id="question-text" class="qtext"></div>
+        <div id="answers" class="answers"></div>
+        <div id="feedback" class="feedback"></div>
+        <button id="next-question-btn" class="btn big-btn hidden">NEXT</button>
+      </div>
+      <div class="slam-wrapper">
+        <div class="slam" id="slam">
+          <img id="slam-image" src="" alt="">
+          <div class="slam-placeholder" id="slam-placeholder">placeholder</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- vote timer -->
+  <section id="timer-screen" class="screen">
+    <h1 class="title">DELIBERATE</h1>
+    <p class="subtitle">Discuss. Accuse. Decide who to exile.</p>
+    <div id="timer-display" class="big-timer">60</div>
+    <button id="skip-timer-btn" class="btn">SKIP</button>
+  </section>
+
+  <!-- vote -->
+  <section id="vote-screen" class="screen">
+    <h1 class="title">CAST THE VOTE</h1>
+    <p class="subtitle">Click the senator the Curia has chosen to exile.</p>
+    <ul id="vote-players" class="vote-list"></ul>
+  </section>
+
+  <!-- exile -->
+  <section id="exile-screen" class="screen">
+    <h1 id="exile-title" class="title"></h1>
+    <div id="exile-message" class="exile-msg"></div>
+    <button id="continue-btn" class="btn big-btn">CONTINUE</button>
+  </section>
+
+  <!-- game over -->
+  <section id="gameover-screen" class="screen">
+    <h1 id="gameover-title" class="title"></h1>
+    <div id="gameover-message" class="exile-msg"></div>
+    <div class="panel center">
+      <h2>THE TRUTH REVEALED</h2>
+      <ul id="gameover-reveal" class="roster"></ul>
+    </div>
+    <button id="play-again-btn" class="btn big-btn">PLAY AGAIN</button>
+  </section>
+
+  <script src="questions.js"></script>
+  <script src="images.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
